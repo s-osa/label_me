@@ -45,6 +45,10 @@ module LabelMe
       def total_message_card_charge
         @row["メッセージカード手数料合計"].to_i
       end
+
+      def paid?
+        /入金済/ === @row["入金状態"]
+      end
     end
   end
 end
