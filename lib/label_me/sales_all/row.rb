@@ -6,6 +6,7 @@ module LabelMe
         @row = row
       end
 
+      # Accessors for general column
       def order_id
         @row["売上ID"].to_s
       end
@@ -14,6 +15,7 @@ module LabelMe
         Date.parse(@row["受注日"])
       end
 
+      # Accessors for customer column
       def customer_id
         @row["購入者 顧客ID"].to_s
       end
@@ -48,6 +50,55 @@ module LabelMe
 
       def paid?
         /入金済/ === @row["入金状態"]
+      end
+
+      # Accessors for recipient column
+      def recipient_id
+        @row["配送先ID"].to_s
+      end
+
+      def recipient_name
+        @row["配送先 名前"].to_s
+      end
+
+      def recipient_kana
+        @row["配送先 フリガナ"].to_s
+      end
+
+      def recipient_postal_code
+        @row["配送先 郵便番号"].to_s
+      end
+
+      def recipient_address
+        @row["配送先 都道府県名"].to_s + @row["配送先 住所"].to_s
+      end
+
+      def recipient_phone_number
+        @row["配送先 電話番号"].to_s
+      end
+
+      def wished_delivery_date
+        @row["配送希望日"].to_s
+      end
+
+      def wished_delivery_timezone
+        @row["配送希望時間"].to_s
+      end
+
+      def recipient_labeling
+        @row["配送先 熨斗（のし）"].to_s
+      end
+
+      def recipient_message_card_type
+        @row["配送先 メッセージカード種類"].to_s
+      end
+
+      def recipient_message_card_body
+        @row["配送先 メッセージカード内容"].to_s
+      end
+
+      def recipient_notes
+        @row["配送先 備考"].to_s
       end
     end
   end

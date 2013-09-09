@@ -80,4 +80,78 @@ describe LabelMe::SalesAll::Row do
       end
     end
   end
+
+  describe "recipient columns" do
+    describe "#recipient_id" do
+      it "should return 配送先ID" do
+        expect(@row.recipient_id).to eq("34564567")
+      end
+    end
+
+    describe "#recipient_name" do
+      it "should return 配送先 名前" do
+        expect(@row.recipient_name).to eq("桃瀬修")
+      end
+    end
+
+    describe "#recipient_kana" do
+      it "should return 配送先 フリガナ" do
+        expect(@row.recipient_kana).to eq("モモセシュウ")
+      end
+    end
+
+    describe "#recipient_postal_code" do
+      it "should return 配送先 郵便番号" do
+        expect(@row.recipient_postal_code).to eq("1000001")
+      end
+    end
+
+    describe "#recipient_address" do
+      it "should return 配送先 都道府県名 and 配送先 住所" do
+        expect(@row.recipient_address).to match(/東京都大田区足柄.+401/)
+      end
+    end
+
+    describe "#recipient_phone_number" do
+      it "should return 配送先 電話番号" do
+        expect(@row.recipient_phone_number).to eq("0987-65-4321")
+      end
+    end
+
+    describe "#wished_delivery_date" do
+      it "should return 配送希望日" do
+        expect(@row.wished_delivery_date).to eq("設定なし")
+      end
+    end
+
+    describe "#wished_delivery_timezone" do
+      it "should return 配送希望時間" do
+        expect(@row.wished_delivery_timezone).to eq("14時-16時")
+      end
+    end
+
+    describe "#recipient_labeling" do
+      it "should return 配送先 熨斗（のし）" do
+        expect(@row.recipient_labeling).to eq("のし")
+      end
+    end
+
+    describe "#recipient_message_card_type" do
+      it "should return 配送先 メッセージカード種類" do
+        expect(@row.recipient_message_card_type).to eq("メッセージカードA")
+      end
+    end
+
+    describe "#recipient_message_card_body" do
+      it "should return 配送先 メッセージカード内容" do
+        expect(@row.recipient_message_card_body).to eq("誕生日")
+      end
+    end
+
+    describe "#recipient_notes" do
+      it "should return 配送先 備考" do
+        expect(@row.recipient_notes).to eq("備考欄です")
+      end
+    end
+  end
 end
