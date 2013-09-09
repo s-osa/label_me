@@ -17,13 +17,13 @@ And then execute:
 ## Usage
 
 ```ruby
-orders = LabelMe::SalesAll.parse("sales_all.csv")
+rows = LabelMe::SalesAll::Row.parse("sales_all.csv")
 
-orders.first.order_id #=> "12342345"
+rows.first.order_id #=> "12342345"
 ```
 
 
-## Attributes
+## Attributes for LabelMe::SalesAll::Row
 
 ### General
 
