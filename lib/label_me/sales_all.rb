@@ -5,7 +5,7 @@ module LabelMe
 
     def parse(csv_path)
       rows = []
-      open(csv_path, "r:windows-31j") do |file|
+      open(csv_path, "r:windows-31j:utf-8") do |file|
         CSV.new(file, headers: true).each do |row|
           rows << LabelMe::SalesAll::Row.new(row)
         end
