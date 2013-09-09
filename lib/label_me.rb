@@ -1,5 +1,5 @@
 require "label_me/version"
 
 module LabelMe
-  # Your code goes here...
+  require "label_me/sales_all"
 end
