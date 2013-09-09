@@ -2,6 +2,16 @@
 module LabelMe
   module SalesAll
     class Row
+      require 'csv'
+
+      class << self
+        def parse(csv_path)
+          open(csv_path, "r:windows-31j:utf-8") do |file|
+            return CSV.new(file, headers: true).map{|row| LabelMe::SalesAll::Row.new(row) }
+          end
+        end
+      end
+
       def initialize(row)
         @row = row
       end
