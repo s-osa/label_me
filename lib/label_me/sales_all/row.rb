@@ -6,7 +6,10 @@ module LabelMe
         @row = row
       end
 
+      ############################################################
       # Accessors for general column
+      ############################################################
+
       def order_id
         @row["売上ID"].to_s
       end
@@ -15,7 +18,10 @@ module LabelMe
         Date.parse(@row["受注日"])
       end
 
+      ############################################################
       # Accessors for customer column
+      ############################################################
+
       def customer_id
         @row["購入者 顧客ID"].to_s
       end
@@ -52,7 +58,10 @@ module LabelMe
         /入金済/ === @row["入金状態"]
       end
 
+      ############################################################
       # Accessors for recipient column
+      ############################################################
+
       def recipient_id
         @row["配送先ID"].to_s
       end
@@ -99,6 +108,26 @@ module LabelMe
 
       def recipient_notes
         @row["配送先 備考"].to_s
+      end
+
+      ############################################################
+      # Accessors for line item column
+      ############################################################
+
+      def line_item_id
+        @row["売上詳細ID"].to_s
+      end
+
+      def line_item_code
+        @row["購入商品 商品ID"].to_s
+      end
+
+      def line_item_unit_price
+        @row["購入商品 販売価格(消費税込)"].to_i
+      end
+
+      def line_item_quantity
+        @row["購入商品 販売個数"].to_i
       end
     end
   end

@@ -154,4 +154,30 @@ describe LabelMe::SalesAll::Row do
       end
     end
   end
+
+  describe "line item columns" do
+    describe "#line_item_id" do
+      it "should return 売上詳細ID" do
+        expect(@row.line_item_id).to eq("45675678")
+      end
+    end
+
+    describe "#line_item_code" do
+      it "should return 購入商品 商品ID" do
+        expect(@row.line_item_code).to eq("56786789")
+      end
+    end
+
+    describe "#line_item_unit_price" do
+      it "should return 購入商品 販売価格(消費税込)" do
+        expect(@row.line_item_unit_price).to eq(893)
+      end
+    end
+
+    describe "#line_item_quantity" do
+      it "should return 購入商品 販売個数" do
+        expect(@row.line_item_quantity).to eq(2)
+      end
+    end
+  end
 end
