@@ -30,6 +30,23 @@ module LabelMe
       attr_accessor :wished_delivery_date
       attr_accessor :wished_delivery_timezone
       attr_accessor :line_items
+
+      def to_hash
+        {
+          number:       number,
+          name:         name,
+          kana:         kana,
+          address:      address,
+          phone_number: phone_number,
+          postal_code:  postal_code,
+          labeling:     labeling,
+          message_card: message_card,
+          notes:        notes,
+          wished_delivery_date:     wished_delivery_date,
+          wished_delivery_timezone: wished_delivery_timezone,
+          line_items_attributes: line_items.map(&:to_hash)
+        }
+      end
     end
   end
 end

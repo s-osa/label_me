@@ -12,6 +12,15 @@ module LabelMe
       attr_accessor :quantity
       attr_accessor :unit_price
       attr_accessor :code
+
+      def to_hash
+        {
+          number:     number,
+          quantity:   quantity,
+          unit_price: unit_price,
+          code:       code
+        }
+      end
     end
   end
 end

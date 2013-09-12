@@ -16,6 +16,17 @@ module LabelMe
       attr_accessor :phone_number
       attr_accessor :address
       attr_accessor :postal_code
+
+      def to_hash
+        {
+          number:       number,
+          name:         name,
+          email:        email,
+          phone_number: phone_number,
+          address:      address,
+          postal_code:  postal_code
+        }
+      end
     end
   end
 end

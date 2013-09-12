@@ -52,4 +52,18 @@ describe LabelMe::Order do
       end
     end
   end
+
+  describe "#to_hash" do
+    it "should return Hash" do
+      hash = @order.to_hash
+      expect(hash[:number]).to eq(12342345)
+      expect(hash[:order_date]).to eq(Date.new(2013,1,18))
+      expect(hash[:paid?]).to eq(true)
+      expect(hash[:shipping_charge]).to eq(600)
+      expect(hash[:message_card_charge]).to eq(0)
+      expect(hash[:customer_attributes]).to eq(@order.customer.to_hash)
+      expect(hash[:recipients_attributes]).to eq([@order.recipients.first.to_hash])
+      p hash
+    end
+  end
 end

@@ -44,5 +44,17 @@ describe LabelMe::Order::Customer do
       end
     end
   end
+
+  describe "#to_hash" do
+    it "should return Hash" do
+      hash = @customer.to_hash
+      expect(hash[:number]).to eq(23453456)
+      expect(hash[:name]).to eq("桃瀬くるみ")
+      expect(hash[:email]).to eq("kurumi@example.com")
+      expect(hash[:phone_number]).to eq("098-765-4321")
+      expect(hash[:address]).to match(/東京都大田区足柄.+402/)
+      expect(hash[:postal_code]).to eq("1000001")
+    end
+  end
 end
 

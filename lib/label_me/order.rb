@@ -23,6 +23,18 @@ module LabelMe
     def paid?
       @paid
     end
+
+    def to_hash
+      {
+        number:                number,
+        order_date:            order_date,
+        paid?:                 paid?,
+        shipping_charge:       shipping_charge,
+        message_card_charge:   message_card_charge,
+        customer_attributes:   customer.to_hash,
+        recipients_attributes: recipients.map(&:to_hash),
+      }
+    end
   end
 end
 

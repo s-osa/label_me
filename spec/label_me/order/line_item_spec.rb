@@ -33,4 +33,18 @@ describe LabelMe::Order::LineItem do
       end
     end
   end
+
+  describe "#to_hash" do
+    before do
+
+    end
+
+    it "should return Hash" do
+      hash = @line_item.to_hash
+      expect(hash[:number]).to eq(45675678)
+      expect(hash[:quantity]).to eq(2)
+      expect(hash[:unit_price]).to eq(893)
+      expect(hash[:code]).to eq("56786789")
+    end
+  end
 end
