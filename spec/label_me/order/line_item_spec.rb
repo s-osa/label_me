@@ -47,4 +47,24 @@ describe LabelMe::Order::LineItem do
       expect(hash[:code]).to eq("56786789")
     end
   end
+
+  describe "#===" do
+    before do
+      @line_item1 = LabelMe::SalesAll::Object.parse("spec/csv/sales_all.csv").first.recipients.first.line_items.first
+      @line_item2 = LabelMe::SalesAll::Object.parse("spec/csv/sales_all.csv").first.recipients.first.line_items.first
+    end
+
+    context "same attributes" do
+      it "should return true" do
+        expect(@line_item1 === @line_item2).to eq(true)
+      end
+    end
+
+    context "different attributes" do
+      it "should return false" do
+        @line_item2.number = 1
+        expect(@line_item1 === @line_item2).to eq(false)
+      end
+    end
+  end
 end

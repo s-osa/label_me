@@ -27,6 +27,10 @@ module LabelMe
           postal_code:  postal_code
         }
       end
+
+      def ===(other)
+        self.number == other.number
+      end
     end
   end
 end

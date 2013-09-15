@@ -35,6 +35,10 @@ module LabelMe
         recipients_attributes: recipients.map(&:to_hash),
       }
     end
+
+    def ===(other)
+      self.number == other.number
+    end
   end
 end
 

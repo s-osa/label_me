@@ -63,7 +63,26 @@ describe LabelMe::Order do
       expect(hash[:message_card_charge]).to eq(0)
       expect(hash[:customer_attributes]).to eq(@order.customer.to_hash)
       expect(hash[:recipients_attributes]).to eq([@order.recipients.first.to_hash])
-      p hash
+    end
+  end
+
+  describe "#===" do
+    before do
+      @order1 = LabelMe::SalesAll::Object.parse("spec/csv/sales_all.csv").first
+      @order2 = LabelMe::SalesAll::Object.parse("spec/csv/sales_all.csv").first
+    end
+
+    context "same attributes" do
+      it "should return true" do
+        expect(@order1 === @order2).to eq(true)
+      end
+    end
+
+    context "different attributes" do
+      it "should return false" do
+        @order2.number = 1
+        expect(@order1 === @order2).to eq(false)
+      end
     end
   end
 end

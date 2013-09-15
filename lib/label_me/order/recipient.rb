@@ -47,6 +47,10 @@ module LabelMe
           line_items_attributes: line_items.map(&:to_hash)
         }
       end
+
+      def ===(other)
+        self.number == other.number
+      end
     end
   end
 end

@@ -56,5 +56,25 @@ describe LabelMe::Order::Customer do
       expect(hash[:postal_code]).to eq("1000001")
     end
   end
+
+  describe "#===" do
+    before do
+      @customer1 = LabelMe::SalesAll::Object.parse("spec/csv/sales_all.csv").first.customer
+      @customer2 = LabelMe::SalesAll::Object.parse("spec/csv/sales_all.csv").first.customer
+    end
+
+    context "same attributes" do
+      it "should return true" do
+        expect(@customer1 === @customer2).to eq(true)
+      end
+    end
+
+    context "different attributes" do
+      it "should return false" do
+        @customer2.number = 1
+        expect(@customer1 === @customer2).to eq(false)
+      end
+    end
+  end
 end
 

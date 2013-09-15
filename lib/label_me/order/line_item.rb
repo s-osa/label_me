@@ -21,6 +21,10 @@ module LabelMe
           code:       code
         }
       end
+
+      def ===(other)
+        self.number == other.number
+      end
     end
   end
 end

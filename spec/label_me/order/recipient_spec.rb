@@ -103,6 +103,26 @@ describe LabelMe::Order::Recipient do
       expect(hash[:line_items_attributes]).to eq([@recipient.line_items.first.to_hash])
     end
   end
+
+  describe "#===" do
+    before do
+      @recipient1 = LabelMe::SalesAll::Object.parse("spec/csv/sales_all.csv").first.recipients.first
+      @recipient2 = LabelMe::SalesAll::Object.parse("spec/csv/sales_all.csv").first.recipients.first
+    end
+
+    context "same attributes" do
+      it "should return true" do
+        expect(@recipient1 === @recipient2).to eq(true)
+      end
+    end
+
+    context "different attributes" do
+      it "should return false" do
+        @recipient2.number = 1
+        expect(@recipient1 === @recipient2).to eq(false)
+      end
+    end
+  end
 end
 
 
