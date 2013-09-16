@@ -10,7 +10,7 @@ describe LabelMe::SalesAll::Object do
 
       it "should return Array of LabelMe::SalesAll::Row" do
         expect(@orders).to be_a_kind_of(Array)
-        expect(@orders.size).to eq(1)
+        expect(@orders.size).to eq(4)
         expect(@orders.all?{|order| order.is_a? LabelMe::Order }).to be_true
       end
     end
