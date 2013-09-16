@@ -14,5 +14,22 @@ describe LabelMe::SalesAll::Object do
         expect(@orders.all?{|order| order.is_a? LabelMe::Order }).to be_true
       end
     end
+
+    describe ".build" do
+      before do
+        @orders = LabelMe::SalesAll::Object.build("spec/csv/sales_all.csv")
+      end
+
+      it "should return tree structured instances of LabelMe::Order" do
+        @orders.each{|order| puts order.to_hash}
+        expect(@orders.size).to eq(2)
+        expect(@orders[0].recipients.size).to eq(2)
+        expect(@orders[0].recipients[0].line_items.size).to eq(2)
+        expect(@orders[0].recipients[0].line_items.size).to eq(2)
+        expect(@orders[0].recipients[1].line_items.size).to eq(1)
+        expect(@orders[1].recipients.size).to eq(1)
+        expect(@orders[1].recipients[0].line_items.size).to eq(1)
+      end
+    end
   end
 end
