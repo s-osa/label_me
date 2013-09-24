@@ -21,7 +21,6 @@ describe LabelMe::SalesAll::Object do
       end
 
       it "should return tree structured instances of LabelMe::Order" do
-        @orders.each{|order| puts order.to_hash}
         expect(@orders.size).to eq(2)
         expect(@orders[0].recipients.size).to eq(2)
         expect(@orders[0].recipients[0].line_items.size).to eq(2)

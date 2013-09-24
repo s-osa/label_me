@@ -28,7 +28,7 @@ module LabelMe
       {
         number:                number,
         order_date:            order_date,
-        paid?:                 paid?,
+        paid:                 paid?,
         shipping_charge:       shipping_charge,
         message_card_charge:   message_card_charge,
         customer_attributes:   customer.to_hash,
